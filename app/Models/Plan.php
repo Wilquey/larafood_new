@@ -13,6 +13,16 @@ class Plan extends Model
         'description',
     ];
 
+    /**
+     * Get all of the details for the Plan
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function details()
+    {
+        return $this->hasMany(DetailPlan::class);
+    }
+
     public function search($filter = null)
     {
         $results = $this

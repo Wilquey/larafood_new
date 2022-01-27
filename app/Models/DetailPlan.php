@@ -1,0 +1,24 @@
+<?php
+
+namespace App\Models;
+
+use Illuminate\Database\Eloquent\Model;
+
+class DetailPlan extends Model
+{
+    protected $table = 'details_plan';
+
+    protected $fillable = [
+        'name',
+    ];
+
+    /**
+     * Get the plan that owns the DetailPlan
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function plan()
+    {
+        return $this->belongsTo(Plan::class);
+    }
+}
