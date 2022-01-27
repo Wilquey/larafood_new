@@ -21,6 +21,19 @@ route::prefix('admin')
      * Documentation
      */
 
+    /**
+     * Routes Permission x Profile
+     */
+
+    Route::get('profiles/{id}/permissions', 'ACL\PermissionProfileController@index')->name('profiles.permissions');
+
+
+
+     /**
+     * Routes Permission
+     */
+    Route::any('permissions/search', 'ACL\PermissionController@search')->name('permissions.search');
+    Route::resource('permissions', 'ACL\PermissionController');
 
     /**
      * Routes Profile
