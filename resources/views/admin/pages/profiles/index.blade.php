@@ -34,7 +34,7 @@
                                 {{ $profile->name }}
                             </td>
                             <td style="width: 10px;">
-                                <a href="{{ route('profiles.edit', $profile->id) }}" class="btn btn-primary">Detalhes</a>
+                                {{--  <a href="{{ route('profiles.edit', $profile->id) }}" class="btn btn-primary">Detalhes</a>  --}}
                                 <a href="{{ route('profiles.edit', $profile->id) }}" class="btn btn-info">Edit</a>
                                 <a href="{{ route('profiles.show', $profile->id) }}" class="btn btn-warning">VER</a>
                             </td>
