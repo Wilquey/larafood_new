@@ -1,0 +1,24 @@
+Upgrade to 8.0 From 7.x
+
+> Atualizar phpunit.xml
+> composer.json
+    Atualizar versão do PHP: "php": "^7.3|^8.0",
+    Atualizar versions require
+    Atualizar require-dev (copy github)
+    Atualizar Telescope: "laravel/telescope": "^4.0",
+> Database
+    renomear database/seeds/ para database/seeders/
+    Atualizar namespace database
+    Atualizar composer.json (remover classmap)
+> Model Factory *
+> Atualizar public/index.php
+> Paginação: Usar Boostrap (Paginator::useBootstrap();)
+> Explicar sobre rotas RouteServiceProvider
+> Atualizar assertExactJson *
+> composer update (vai gerar erro - comentar routes/web.php Auth::routes())
+> Autenticação
+    composer require laravel/ui
+> php artisan test (vai gerar erros)
+    Database:
+        composer require laravel/legacy-factories
+php artisan test

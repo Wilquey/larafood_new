@@ -11,6 +11,33 @@ class Permission extends Model
         'description',
     ];
 
+    /**
+     * Profiles not linked with this permissions
+     */
+    public function profilesAvailable($filter = null)
+    {
+        $profiles = Profile::whereNotIn('id', function ($query) {
+            $query->select('profile_id');
+            $query->from('permission_profile');
+            $query->whereRaw("permission_id={$this->id}");
+        })
+            ->where(function ($queryFilter) use ($filter) {
+                if ($filter)
+                    $queryFilter->where('profiles.name', 'LIKE', "%{$filter}%");
+            })
+            ->paginate();
+
+        return $profiles;
+    }
+
+    /**
+     * Get Profiles
+     */
+    public function profiles()
+    {
+        return $this->belongsToMany(Profile::class);
+    }
+
     public function search($filter = null)
     {
         $results = $this
