@@ -100,69 +100,69 @@ class CategoryProductController extends Controller
      ******************************************************************************************************/
 
 
-    public function products($idPermission)
+    public function products($idCategory)
     {
-        $permission = $this->permission->find($idPermission);
+        $category = $this->category->find($idCategory);
 
-        if (!$permission) {
+        if (!$category) {
             return redirect()->back();
         }
 
-        $products = $permission->products()->paginate();
+        $products = $category->products()->paginate();
 
-        return view('admin.pages.categories.products.products', compact('products', 'permission'));
+        return view('admin.pages.categories.products.products', compact('products', 'category'));
     }
 
-    public function productsAvailable(Request $request, $idPermission)
+    public function productsAvailable(Request $request, $idCategory)
     {
-        $permission = $this->permission->find($idPermission);
+        $category = $this->category->find($idCategory);
 
-        if (!$permission) {
+        if (!$category) {
             return redirect()->back();
         }
 
         $filters = $request->except('_token');
 
-        $products = $permission->productsAvailable($request->filter);
+        $products = $category->productsAvailable($request->filter);
 
-        return view('admin.pages.categories.products.available', compact('products', 'permission', 'filters'));
+        return view('admin.pages.categories.products.available', compact('products', 'category', 'filters'));
     }
 
 
-    public function attachProductsPermission(Request $request, $idPermission)
+    public function attachProductsCategory(Request $request, $idCategory)
     {
-        $permission = $this->permission->find($idPermission);
+        $category = $this->category->find($idCategory);
 
-        if (!$permission) {
+        if (!$category) {
             return redirect()->back();
         }
 
         if (!$request->products || count($request->products) == 0){
              return redirect()
                         ->back()
-                        ->with('info', 'Precisa escolher pelo menos um perfil');
+                        ->with('info', 'Precisa escolher pelo menos uma categoria');
 
         }
 
         //dd($request->categories);
 
-        $permission->products()->attach($request->products);
+        $category->products()->attach($request->products);
 
-        return redirect()->route('categories.products', $permission->id);
+        return redirect()->route('categories.products', $category->id);
     }
 
 
-    public function detachProductPermission($idProduct, $idPermission)
+    public function detachProductPermission($idProduct, $idCategory)
     {
-        $profile = $this->profile->find($idProduct);
-        $permission = $this->permission->find($idPermission);
+        $product = $this->product->find($idProduct);
+        $category = $this->category->find($idCategory);
 
-        if (!$profile || !$permission) {
+        if (!$product || !$category) {
             return redirect()->back();
         }
 
-        $permission->products()->detach($profile);
+        $category->products()->detach($product);
 
-        return redirect()->route('categories.products', $profile->id);
+        return redirect()->route('categories.products', $product->id);
     }
 }

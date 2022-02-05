@@ -8,7 +8,7 @@
         <li class="breadcrumb-item active"><a href="{{ route('products.index') }}" class="active">Perfis</a></li>
     </ol>
     <h1>Produtos das Categoria <strong>{{$category->name}}</strong>
-    <a href="{{ route('categories.products.available', $category->id) }}" class="btn btn-dark">ADD NOVA CATEGORIA<i class="fas fa-plus-square"></i> </a></h1>
+    <a href="{{ route('categories.products.available', $category->id) }}" class="btn btn-dark">ADD NOVO PRODUTO<i class="fas fa-plus-square"></i> </a></h1>
 @stop
 
 @section('content')
