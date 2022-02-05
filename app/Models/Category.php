@@ -48,7 +48,7 @@ class Category extends Model
     public function search($filter = null)
     {
         $results = $this
-                    ->where('title', 'LIKE', "%{$filter}%")
+                    ->where('name', 'LIKE', "%{$filter}%")
                     ->orWhere('description', 'LIKE', "%{$filter}%")
                     ->paginate();
 
