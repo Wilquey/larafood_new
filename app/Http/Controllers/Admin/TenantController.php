@@ -2,21 +2,21 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Models\Product;
+use App\Models\Tenant;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Storage;
-use App\Http\Requests\StoreUpdateProduct;
+use App\Http\Requests\StoreUpdateTenant;
 
-class ProductController extends Controller
+class TenantController extends Controller
 {
     private $repository;
 
-    public function __construct(Product $product)
+    public function __construct(Tenant $tenant)
     {
-        $this->repository = $product;
+        $this->repository = $tenant;
 
-        $this->middleware(['can:products']);
+        $this->middleware(['can:tenants']);
     }
     
     /**
@@ -26,9 +26,9 @@ class ProductController extends Controller
      */
     public function index()
     {
-        $products = $this->repository->latest()->paginate();
+        $tenants = $this->repository->latest()->paginate();
 
-        return view('admin.pages.products.index', compact('products'));
+        return view('admin.pages.tenants.index', compact('tenants'));
     }
 
     /**
@@ -38,7 +38,7 @@ class ProductController extends Controller
      */
     public function create()
     {
-        return view('admin.pages.products.create');
+        return view('admin.pages.tenants.create');
     }
 
     /**
@@ -47,19 +47,19 @@ class ProductController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreUpdateProduct $request)
+    public function store(StoreUpdateTenant $request)
     {
         $data = $request->all();
 
         $tenant = auth()->user()->tenant;
 
-        if($request->hasFile('image') && $request->image->isValid()){
-            $data['image'] = $request->image->store("tenants/{$tenant->uuid}/products");
+        if($request->hasFile('logo') && $request->logo->isValid()){
+            $data['logo'] = $request->logo->store("tenants/{$tenant->uuid}/tenants");
         }
         
         $this->repository->create($data);
 
-        return redirect()->route('products.index');
+        return redirect()->route('tenants.index');
     }
 
     /**
@@ -70,12 +70,12 @@ class ProductController extends Controller
      */
     public function show($id)
     {
-        $product = $this->repository->find($id);
+        $tenant = $this->repository->find($id);
 
-        if (!$product)
+        if (!$tenant)
             return redirect()->back();
 
-       return view('admin.pages.products.show',compact('product'));
+       return view('admin.pages.tenants.show',compact('tenant'));
     }
 
     /**
@@ -86,12 +86,12 @@ class ProductController extends Controller
      */
     public function edit($id)
     {
-        $product = $this->repository->where('id', $id)->first();
+        $tenant = $this->repository->where('id', $id)->first();
 
-        if (!$product)
+        if (!$tenant)
             return redirect()->back();
 
-       return view('admin.pages.products.edit', compact('product'));
+       return view('admin.pages.tenants.edit', compact('tenant'));
     }
 
     /**
@@ -101,27 +101,27 @@ class ProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(StoreUpdateProduct $request, $id)
+    public function update(StoreUpdateTenant $request, $id)
     {
-        $product = $this->repository->where('id', $id)->first();
+        $tenant = $this->repository->where('id', $id)->first();
 
-        if (!$product)
+        if (!$tenant)
             return redirect()->back();
 
         $data = $request->all();
 
-        if($request->hasFile('image') && $request->image->isValid()) {
+        if($request->hasFile('logo') && $request->logo->isValid()) {
             
-            if(Storage::exists($product->image)) {
-                Storage::delete($product->image);
+            if(Storage::exists($tenant->logo)) {
+                Storage::delete($tenant->logo);
             }            
             
-            $data['image'] = $request->image->store("tenants/{$tenant->uuid}/products");
+            $data['logo'] = $request->logo->store("tenants/{$tenant->uuid}/tenants");
         }
 
-        $product->update($data);
+        $tenant->update($data);
 
-        return redirect()->route('products.index');
+        return redirect()->route('tenants.index');
     }
 
     /**
@@ -132,28 +132,28 @@ class ProductController extends Controller
      */
     public function destroy($id)
     {
-        $product = $this->repository
+        $tenant = $this->repository
                             ->where('id', $id)
                             ->first();
 
-        if (!$product)
+        if (!$tenant)
             return redirect()->back();
         
-        if(Storage::exists($product->image)){
-                Storage::delete($product->image);
+        if(Storage::exists($tenant->logo)){
+                Storage::delete($tenant->logo);
             }
 
-        $product->delete();
+        $tenant->delete();
 
-        return redirect()->route('products.index');
+        return redirect()->route('tenants.index');
     }
 
     public function search(Request $request)
     {
         $filters = $request->except('_token');
 
-        $products = $this->repository->search($request->filter);
+        $tenants = $this->repository->search($request->filter);
 
-        return view('admin.pages.products.index',  compact('products', 'filters'));
+        return view('admin.pages.tenants.index',  compact('tenants', 'filters'));
     }
 }

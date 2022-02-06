@@ -20,11 +20,31 @@ route::prefix('admin')
             ->group(function(){
     /**
      * Documentation
-     
-     *CategoryProductController
-     *Permission = Category
-     *Profile = Product
-*/
+    */
+
+    Route::get('test-acl', function(){
+        dd(auth()->user()->permissions());
+    });
+
+    /**
+     * Routes Role
+     */
+    Route::any('roles/search', 'ACL\RoleController@search')->name('roles.search');
+    Route::resource('roles', 'ACL\RoleController');
+
+    /**
+     * Routes Tenants
+     */
+    Route::any('tenants/search', 'TenantController@search')->name('tenants.search');
+    Route::resource('tenants', 'TenantController');
+
+
+    /**
+     * Routes Tables
+     */
+    Route::any('tables/search', 'TableController@search')->name('tables.search');
+    Route::resource('tables', 'TableController');
+
     /**
      * Routes Product x Category
      */
@@ -110,7 +130,7 @@ route::prefix('admin')
     Route::delete('profiles/{id}', 'ACL\ProfileController@destroy')->name('profiles.destroy');
     Route::get('profiles/{id}', 'ACL\ProfileController@show')->name('profiles.show');
     Route::post('profiles/store', 'ACL\ProfileController@store')->name('profiles.store');
-    Route::get('profiles', 'ACL\ProfileController@index')->name('profiles.index');
+    Route::get('profiles', 'ACL\ProfileController@index')->name('profiles.index')->middleware('can:profiles');
 
     /**
      * Routes Details Plans

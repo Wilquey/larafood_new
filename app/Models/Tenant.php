@@ -30,9 +30,9 @@ class Tenant extends Model
     }
 
     /**
-     * Get Plans
+     * Get Plan
      */
-    public function plans()
+    public function plan()
     {
         return $this->belongsTo(Plan::class);
     }

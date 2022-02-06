@@ -76,6 +76,4 @@ class Plan extends Model
 
 }
 
-// settings.json - anterior ;;;... agora está como         "editor.autoClosingBrackets": "always"
-// "editor.defaultFormatter": "shufo.vscode-blade-formatter"
 

@@ -1,0 +1,19 @@
+Passo 1 Criar Model parâmetro -m para criar a migration
+php artisan make:model Models\\Tenant -m
+
+Passo 2 criar Controller
+php artisan make:controller Admin\\TenantController -resource
+
+Passo 3 criar Request
+php artisan make:request StoreUpdateTenant
+
+Passo 4 criar Observer
+php artisan make:observer TenantObeserver
+
+Passo 5 criar as rotas no web.php
+
+Passo 6 criar o fillable no model Tenant
+
+Passo 7 criar os dados no TenantController
+
+Passo 8 criar o conjunto de views
