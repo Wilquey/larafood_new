@@ -38,9 +38,9 @@
                                 {{ $category->description }}
                             </td>
                             <td style="width: 10px;">
-                                <a href="{{ route('categories.edit', $category->id) }}" class="btn btn-info"><i class="fas fa-edit"></a>
+                                <a href="{{ route('categories.edit', $category->id) }}" class="btn btn-primary"><i class="fas fa-edit"></i></a>
                                 <a href="{{ route('categories.show', $category->id) }}" class="btn btn-warning"><i class="fas fa-eye"></i></a>
-                                <a href="{{ route('categories.products', $category->id) }}" class="btn btn-warning"><i class="fas fa-address-book"></i></a>
+                                <a href="{{ route('categories.products', $category->id) }}" class="btn btn-secondary"><i class="fas fa-hamburger"></i></a>
                             </td>
                         </tr>
                     @endforeach

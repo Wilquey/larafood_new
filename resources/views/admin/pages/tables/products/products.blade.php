@@ -39,7 +39,7 @@
                                 {{ $product->description }}
                             </td>
                             <td style="width: 10px;">
-                                <a href="{{ route('products.categories.detach', [$product->id, $category->id]) }}" class="btn btn-danger">DESVINCULAR</a>
+                                <a href="{{ route('products.categories.detach', [$product->id, $category->id]) }}" class="btn btn-danger">Desvincular</a>
                             </td>
                         </tr>
 

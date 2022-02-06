@@ -39,7 +39,7 @@
                                 {{ $role->description }}
                             </td>
                             <td style="width: 10px;">
-                                <a href="{{ route('users.roles.detach', [$user->id, $role->id]) }}" class="btn btn-danger">DESVINCULAR</a>
+                                <a href="{{ route('users.roles.detach', [$user->id, $role->id]) }}" class="btn btn-danger">Desvincular</a>
                             </td>
                         </tr>
 

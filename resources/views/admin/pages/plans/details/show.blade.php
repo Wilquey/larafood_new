@@ -7,7 +7,7 @@
         <li class="breadcrumb-item"><a href="{{ route('admin.index') }}">Dashboard</a></li>
         <li class="breadcrumb-item"><a href="{{ route('plans.index') }}">Planos</a></li>
         <li class="breadcrumb-item"><a href="{{ route('plans.show', $plan->url) }}">{{ $plan->name }}</a></li>
-        <li class="breadcrumb-item"><a href="{{ route('details.plan.index', $plan->url) }}">Detalhes</a></li>
+        <li class="breadcrumb-item"><a href="{{ route('details.plan.index', $plan->url) }}"><i class="fas fa-file-invoice"></i></a></li>
         <li class="breadcrumb-item active"><a href="{{ route('details.plan.destroy', [$plan->url, $detail->id]) }}" class="active">Deletar</a></li>
     </ol>
     <h1>Detalhe do Plano {{ $detail->name }}</h1>

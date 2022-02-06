@@ -44,7 +44,7 @@
                                 {{ $plan->description }}
                             </td>
                             {{--  <td style="width: 10px;">
-                                <a href="{{ route('plans.edit', $profile->id) }}" class="btn btn-info">Edit</a>
+                                <a href="{{ route('plans.edit', $profile->id) }}" class="btn btn-info"><i class="fas fa-address-book"></i></a>
                             </td>  --}}
                         </tr>
                     @endforeach

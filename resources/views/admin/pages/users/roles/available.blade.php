@@ -44,7 +44,7 @@
                                 {{ $role->description }}
                             </td>
                             {{--  <td style="width: 10px;">
-                                <a href="{{ route('users.edit', $role->id) }}" class="btn btn-info">Edit</a>
+                                <a href="{{ route('users.edit', $role->id) }}" class="btn btn-info"><i class="fas fa-address-book"></i></a>
                             </td>  --}}
                         </tr>
                     @endforeach

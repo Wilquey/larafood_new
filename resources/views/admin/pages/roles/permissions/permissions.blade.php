@@ -39,7 +39,7 @@
                                 {{ $permission->description }}
                             </td>
                             <td style="width: 10px;">
-                                <a href="{{ route('roles.permissions.detach', [$role->id, $permission->id]) }}" class="btn btn-danger">DESVINCULAR</a>
+                                <a href="{{ route('roles.permissions.detach', [$role->id, $permission->id]) }}" class="btn btn-danger">Desvincular</a>
                             </td>
                         </tr>
 

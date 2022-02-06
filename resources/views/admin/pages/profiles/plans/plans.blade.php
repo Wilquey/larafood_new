@@ -39,7 +39,7 @@
                                 {{ $plan->description }}
                             </td>
                             <td style="width: 10px;">
-                                <a href="{{ route('profiles.plans.detach', [$profile->id, $plan->id]) }}" class="btn btn-danger">DESVINCULAR</a>
+                                <a href="{{ route('profiles.plans.detach', [$profile->id, $plan->id]) }}" class="btn btn-danger">Desvincular</a>
                             </td>
                         </tr>
 
