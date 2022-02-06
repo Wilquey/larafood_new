@@ -17,3 +17,32 @@ Passo 6 criar o fillable no model Tenant
 Passo 7 criar os dados no TenantController
 
 Passo 8 criar o conjunto de views
+
+
+btn btn-primary         tenants         fas fa-building
+btn btn-secondary       plans           fas fa-list-alt    
+btn btn-success         profiles        fas fa-address-book
+btn btn-danger          roles           fas fa-address-card
+btn btn-warning         permissions     fas fa-lock
+btn btn-info            users           fas fa-users
+btn btn-light           categories      fas fa-layer-group
+btn btn-dark            products        fas fa-hamburger
+                        tables          fas fa-tablet
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

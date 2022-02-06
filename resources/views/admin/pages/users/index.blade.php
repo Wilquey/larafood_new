@@ -39,8 +39,9 @@
                             </td>
                             <td style="width: 10px;">
                                 {{--  <a href="{{ route('users.edit', $user->id) }}" class="btn btn-primary">Detalhes</a>  --}}
-                                <a href="{{ route('users.edit', $user->id) }}" class="btn btn-info">Edit</a>
-                                <a href="{{ route('users.show', $user->id) }}" class="btn btn-warning">VER</a>
+                                <a href="{{ route('users.edit', $user->id) }}" class="btn btn-primary"><i class="fas fa-edit"></i></a>
+                                <a href="{{ route('users.show', $user->id) }}" class="btn btn-warning"><i class="fas fa-eye"></i></a>
+                                <a href="{{ route('users.roles', $user->id) }}" class="btn btn-secondary"><i class="fas fa-address-book"></i></a>
                             </td>
                         </tr>
 

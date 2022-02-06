@@ -1,20 +1,20 @@
 @extends('adminlte::page')
 
-@section('title', "Planos do Perfil {$profile->name}")
+@section('title', "Papeis do Usuário {$user->name}")
 
 @section('content_header')
     <ol class="breadcrumb">
         <li class="breadcrumb-item"><a href="{{ route('admin.index') }}">Dashboard</a></li>
-        <li class="breadcrumb-item active"><a href="{{ route('plans.index') }}" class="active">Perfis</a></li>
+        <li class="breadcrumb-item active"><a href="{{ route('users.index') }}" class="active">Perfis</a></li>
     </ol>
-    <h1>Planos do Perfil <strong>{{$profile->name}}</strong>
-    <a href="{{ route('profiles.plans.available', $profile->id) }}" class="btn btn-dark">ADD NOVO PLANO<i class="fas fa-plus-square"></i> </a></h1>
+    <h1>Papeis do Usuário <strong>{{$user->name}}</strong>
+    <a href="{{ route('users.roles.available', $user->id) }}" class="btn btn-dark">ADD NOVO PAPEL<i class="fas fa-plus-square"></i> </a></h1>
 @stop
 
 @section('content')
     <div class="card">
         <div class="card-header">
-                <form action="{{ route('plans.search') }}" method="POST" class="form form-inline">
+                <form action="{{ route('users.search') }}" method="POST" class="form form-inline">
                     @csrf
                         <input type="text" name="filter" placeholder="Nome" class="form-control" value="{{ $filters['filter'] ?? '' }}">
                         <button type="submit" class="btn btn-dark">Filtrar</button>
@@ -30,16 +30,16 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($plans as $plan)
+                    @foreach ($roles as $role)
                         <tr>
                             <td>
-                                {{ $plan->name }}
+                                {{ $role->name }}
                             </td>
                             <td>
-                                {{ $plan->description }}
+                                {{ $role->description }}
                             </td>
                             <td style="width: 10px;">
-                                <a href="{{ route('profiles.plans.detach', [$profile->id, $plan->id]) }}" class="btn btn-danger">DESVINCULAR</a>
+                                <a href="{{ route('users.roles.detach', [$user->id, $role->id]) }}" class="btn btn-danger">DESVINCULAR</a>
                             </td>
                         </tr>
 
@@ -49,9 +49,9 @@
         </div>
         <div class="card-footer">
             @if (isset($filters))
-                {!! $plans->appends($filters)->links() !!}
+                {!! $roles->appends($filters)->links() !!}
             @else
-                {!! $plans->links() !!}
+                {!! $roles->links() !!}
             @endif
         </div>
     </div>

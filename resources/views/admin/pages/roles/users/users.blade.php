@@ -1,19 +1,20 @@
 @extends('adminlte::page')
 
-@section('title', 'Categorias')
+@section('title', "Usuários do Papel {$role->name}")
 
 @section('content_header')
     <ol class="breadcrumb">
         <li class="breadcrumb-item"><a href="{{ route('admin.index') }}">Dashboard</a></li>
-        <li class="breadcrumb-item active"><a href="{{ route('categories.index') }}" class="active">Categorias</a></li>
+        <li class="breadcrumb-item active"><a href="{{ route('roles.index') }}" class="active">Perfis</a></li>
     </ol>
-    <h1>Categorias <a href="{{ route('categories.create') }}" class="btn btn-dark">ADD <i class="fas fa-plus-square"></i> </a></h1>
+    <h1>Usuários do Papel <strong>{{$role->name}}</strong>
+    <a href="{{ route('roles.users.available', $role->id) }}" class="btn btn-dark">ADD NOVO USUÁRIO<i class="fas fa-plus-square"></i> </a></h1>
 @stop
 
 @section('content')
     <div class="card">
         <div class="card-header">
-                <form action="{{ route('categories.search') }}" method="POST" class="form form-inline">
+                <form action="{{ route('roles.search') }}" method="POST" class="form form-inline">
                     @csrf
                         <input type="text" name="filter" placeholder="Nome" class="form-control" value="{{ $filters['filter'] ?? '' }}">
                         <button type="submit" class="btn btn-dark">Filtrar</button>
@@ -29,29 +30,28 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($categories as $category)
+                    @foreach ($users as $user)
                         <tr>
                             <td>
-                                {{ $category->name }}
+                                {{ $user->name }}
                             </td>
                             <td>
-                                {{ $category->description }}
+                                {{ $user->description }}
                             </td>
                             <td style="width: 10px;">
-                                <a href="{{ route('categories.edit', $category->id) }}" class="btn btn-info"><i class="fas fa-edit"></a>
-                                <a href="{{ route('categories.show', $category->id) }}" class="btn btn-warning"><i class="fas fa-eye"></i></a>
-                                <a href="{{ route('categories.products', $category->id) }}" class="btn btn-warning"><i class="fas fa-address-book"></i></a>
+                                <a href="{{ route('roles.users.detach', [$role->id, $user->id]) }}" class="btn btn-danger">DESVINCULAR</a>
                             </td>
                         </tr>
+
                     @endforeach
                 </tbody>
             </table>
         </div>
         <div class="card-footer">
             @if (isset($filters))
-                {!! $categories->appends($filters)->links() !!}
+                {!! $users->appends($filters)->links() !!}
             @else
-                {!! $categories->links() !!}
+                {!! $users->links() !!}
             @endif
         </div>
     </div>

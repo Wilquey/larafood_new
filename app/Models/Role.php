@@ -2,6 +2,8 @@
 
 namespace App\Models;
 
+use App\Models\User;
+use App\Models\Permission;
 use Illuminate\Database\Eloquent\Model;
 
 class Role extends Model
@@ -20,22 +22,22 @@ class Role extends Model
     }
 
     /**
-     * Get Plans
+     * Get Users
      */
-    public function plans()
+    public function users()
     {
-        return $this->belongsToMany(Plan::class);
+        return $this->belongsToMany(User::class);
     }
 
     /**
-     * Permissions not linked with this profile
+     * Permissions not linked with this roles
      */
     public function permissionsAvailable($filter = null)
     {
         $permissions = Permission::whereNotIn('id', function($query){
             $query->select('permission_id');
-            $query->from('permission_profile');
-            $query->whereRaw("profile_id={$this->id}");
+            $query->from('permission_role');
+            $query->whereRaw("role_id={$this->id}");
         })
         ->where(function($queryFilter) use ($filter){
             if($filter)
@@ -46,26 +48,27 @@ class Role extends Model
         return $permissions;
     }
 
-    
     /**
-     * Plans not linked with this profile
+     * Roles not linked with this user
      */
-    public function plansAvailable($filter = null)
+    public function rolesAvailable($filter = null)
     {
-        $plans = Plan::whereNotIn('id', function($query){
-            $query->select('plan_id');
-            $query->from('plan_profile');
-            $query->whereRaw("profile_id={$this->id}");
+        $roles = Role::whereNotIn('id', function($query){
+            $query->select('role_id');
+            $query->from('role_user');
+            $query->whereRaw("user_id={$this->id}");
         })
         ->where(function($queryFilter) use ($filter){
             if($filter)
-                $queryFilter->where('plan.name', 'LIKE', "%{$filter}%");
+                $queryFilter->where('roles.name', 'LIKE', "%{$filter}%");
         })
         ->paginate();
 
-        return $plans;
+        return $roles;
     }
+    
 
+    
     public function search($filter = null)
     {
         $results = $this

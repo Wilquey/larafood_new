@@ -34,12 +34,11 @@
                                 {{ $role->name }}
                             </td>
                             <td style="width: 10px;">
-                                {{--  <a href="{{ route('roles.edit', $role->id) }}" class="btn btn-primary">Detalhes</a>  --}}
                                 <a href="{{ route('roles.edit', $role->id) }}" class="btn btn-info">Edit</a>
                                 <a href="{{ route('roles.show', $role->id) }}" class="btn btn-warning">VER</a>
-                                {{--  <a href="{{ route('roles.permissions', $role->id) }}" class="btn btn-warning"><i class="fas fa-lock"></i></a>
-                                <a href="{{ route('roles.plans', $role->id) }}" class="btn btn-secondary"><i class="fas fa-address-book"></i></a>
-                            </td>  --}}
+                                <a href="{{ route('roles.permissions', $role->id) }}" class="btn btn-secondary"><i class="fas fa-lock"></i></a>
+                                <a href="{{ route('roles.users', $role->id) }}" class="btn btn-dark"><i class="fas fa-users"></i></a>
+                            </td>
                         </tr>
 
                     @endforeach
