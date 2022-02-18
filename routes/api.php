@@ -1,6 +1,8 @@
 <?php
 
+use App\Models\Client;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Route;
 
 /*
 |--------------------------------------------------------------------------
@@ -12,6 +14,8 @@ use Illuminate\Http\Request;
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
+
+
 
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
@@ -26,4 +30,7 @@ Route::get('/categories', 'Api\CategoryApiController@categoriesByTenant');
 Route::get('/tables/{identify}', 'Api\TableApiController@show');
 Route::get('/tables', 'Api\TableApiController@tablesByTenant');
 
+Route::get('/products/{flag}}', 'Api\ProductApiController@show');
 Route::get('/products', 'Api\ProductApiController@productsByTenant');
+
+Route::post('/client', 'Api\Auth\RegisterController@store');
