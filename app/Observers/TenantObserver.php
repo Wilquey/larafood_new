@@ -27,7 +27,6 @@ class TenantObserver
      */
     public function updating(Tenant $tenant)
     {
-        $tenant->uuid = Str::uuid();
         $tenant->url = Str::kebab($tenant->name);
     }
 

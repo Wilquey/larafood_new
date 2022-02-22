@@ -24,6 +24,8 @@ Route::get('wteste', function() {
     dd($token->plainTextToken);
 });
 
+//Route::get('/sanctum/token1', 'Api\Auth\AuthClientController@auth');
+
 route::prefix('admin')
             ->namespace('Admin')
             ->middleware('auth')
