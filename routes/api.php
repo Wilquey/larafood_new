@@ -32,15 +32,18 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 Route::get('/tenants/{uuid}', 'Api\TenantApiController@show');
 Route::get('/tenants', 'Api\TenantApiController@index');
 
-Route::get('/categories/{url}', 'Api\CategoryApiController@show');
+Route::get('/categories/{identify}', 'Api\CategoryApiController@show');
 Route::get('/categories', 'Api\CategoryApiController@categoriesByTenant');
 
 Route::get('/tables/{identify}', 'Api\TableApiController@show');
 Route::get('/tables', 'Api\TableApiController@tablesByTenant');
 
-Route::get('/products/{flag}}', 'Api\ProductApiController@show');
+Route::get('/products/{identify}}', 'Api\ProductApiController@show');
 Route::get('/products', 'Api\ProductApiController@productsByTenant');
 
 Route::post('/client', 'Api\Auth\RegisterController@store');
+
+Route::get('/orders/{identify}', 'Api\OrderApiController@show');
+Route::get('/orders', 'Api\OrderApiController@store');
 
 

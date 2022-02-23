@@ -68,15 +68,17 @@ class RegisterController extends Controller
      * @return \App\User
      */
     protected function create(array $data)
-    {
+    { //dd('create');
         $plan = session('plan');
 
         if(!$plan){
             return redirect()->route('site.home');           
         }
-
+        //dd('create');
         $tenantService = app(TenantService::class);
         $user = $tenantService->make($plan, $data);
+        //dd('create');
+
 
         event(new TenantCreated($user));
 
