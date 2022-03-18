@@ -2,9 +2,7 @@
 
 namespace App\Models;
 
-use App\Models\Client;
-use App\Models\Tenant;
-use App\Models\Product;
+use App\Tenant\Traits\TenantTrait;
 use Illuminate\Database\Eloquent\Model;
 
 class Order extends Model
@@ -12,6 +10,7 @@ class Order extends Model
     use TenantTrait;
 
     protected $fillable = [
+        'tenant_id',
         'identify',
         'client_id',
         'table_id',
@@ -32,7 +31,7 @@ class Order extends Model
 
     public function table()
     {
-        return $this->belongsTo(Product::class);
+        return $this->belongsTo(Table::class);
     }
 
     public function products()

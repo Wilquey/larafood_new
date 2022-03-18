@@ -44,6 +44,6 @@ Route::get('/products', 'Api\ProductApiController@productsByTenant');
 Route::post('/client', 'Api\Auth\RegisterController@store');
 
 Route::get('/orders/{identify}', 'Api\OrderApiController@show');
-Route::get('/orders', 'Api\OrderApiController@store');
+Route::post('/orders', 'Api\OrderApiController@store');
 
 
