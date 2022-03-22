@@ -48,7 +48,48 @@ class OrderRepository implements OrderRepositoryInterface
         $data = $this->entity->where('identify', $identify)->first();
 
         return $data;
-    }  
+    }
+    
+    public function registerProductsOrder(int $idOrder, array $products)
+    {
+        
+        // utilizando o eloquent relacionamentos laravel
+        $order = $this->entity->find($idOrder);
+
+        $orderProducts = [];
+
+        foreach ($products as $product){
+            $orderProducts[$product['id']] = [
+                'qty' => $product['qty'],
+                'price' => $product['price'],
+            ];
+        }
+
+        $order->products()->attach($orderProducts);
+        
+        
+        // utilizando o query builder
+        //$orderProducts = [];
+        //
+        //foreach ($products as $product){
+        //    array_push($orderProducts, [
+        //        'order_id' => $idOrder,
+        //        'product_id' => $product['id'],
+        //        'qty' => $product['qty'],
+        //        'price' => $product['price'],
+        //    ]);
+        //}
+        //
+        //DB::table('order_product')->insert($orderProducts);
+    } 
+    
+    public function getOrderByClientId(int $idClient)
+    {
+        $orders = $this->entity->where('client_id', $idClient)->paginate();
+
+        return $orders;
+    }
+
        
 
 }

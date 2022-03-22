@@ -25,6 +25,18 @@ class OrderService
 
     }
 
+    public function ordersByClient()
+    {
+        $idClient = $this->getClientIdByOrder();
+        
+        return $this->orderRepository->getOrderByClientId($idClient);
+    }
+
+    public function getOrderByIdentify(string $identify)
+    {
+        return $this->orderRepository->getOrderByIdentify($identify);
+    }
+
     public function createNewOrder(array $order)
     {
         $productsOrder = $this->getProductsByOrder($order['products'] ?? []);
@@ -46,6 +58,8 @@ class OrderService
             $clientId,
             $tableId
         );
+
+        $this->orderRepository->registerProductsOrder($order->id, $productsOrder);
 
         return $order;
     }
@@ -97,11 +111,11 @@ class OrderService
 
         //dd($products);
 
-        foreach ($products as $product) {
-            $total += ($product['price'] * $product['qty']);
-        }
+        //foreach ($products as $product) {
+        //    $total += ($product['price'] * $product['qty']);
+        //}
 
-        return (float) $total;
+        return (float) 90;
     }
 
     private function getTenantIdByOrder(string $uuid)
