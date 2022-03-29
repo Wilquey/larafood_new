@@ -30,17 +30,17 @@ class AuthTest extends TestCase
     public function testAuthClientFake()
     {
         $payload = [
-            'name' => Str::random(10),
             'email' => 'fakeemail@eti.com.br',
             'password' => '1232131',
-            
+            'device_name' => Str::random(10),
+
         ];
 
         $response = $this->postJson('/api/auth/token', $payload);
 
         //$response->dump();
 
-        $response->assertStatus(422)
+        $response->assertStatus(404)
                     ->assertExactJson([
                         'message' => trans('messages.invalid_credentials')
                     ]);

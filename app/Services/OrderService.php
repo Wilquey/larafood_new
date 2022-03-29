@@ -10,7 +10,7 @@ use App\Repositories\Contracts\ProductRepositoryInterface;
 class OrderService
 {
     protected $orderRepository, $tenantRepository, $tableRepository, $productRepository;
-    
+
     public function __construct(
         OrderRepositoryInterface $orderRepository,
         TenantRepositoryInterface $tenantRepository,
@@ -28,7 +28,7 @@ class OrderService
     public function ordersByClient()
     {
         $idClient = $this->getClientIdByOrder();
-        
+
         return $this->orderRepository->getOrderByClientId($idClient);
     }
 
@@ -40,15 +40,15 @@ class OrderService
     public function createNewOrder(array $order)
     {
         $productsOrder = $this->getProductsByOrder($order['products'] ?? []);
-        
+
         $identify = $this->getIdentifyOrder();
-        $total = $this->getTotalOrder([$productsOrder]);
+        $total = $this->getTotalOrder($productsOrder);
         $status = 'open';
         $tenantId = $this->getTenantIdByOrder($order['token_company']);
         $comment = isset($order['comment']) ? $order['comment'] : '';
         $clientId = $this->getClientIdByOrder();
         $tableId = $this->getTableIdByOrder($order['table'] ?? '');
-        
+
         $order = $this->orderRepository->createNewOrder(
             $identify,
             $total,
@@ -82,7 +82,7 @@ class OrderService
             $this->getIdentifyOrder($qtyCaraceters + 1);
         }
 
-        return $identify; 
+        return $identify;
 
     }
 
@@ -100,8 +100,8 @@ class OrderService
 
         }
 
-        //dd($products);
-        
+        // dd($products);
+
         return $products;
     }
 
@@ -109,13 +109,11 @@ class OrderService
     {
         $total = 0;
 
-        //dd($products);
+        foreach ($products as $product) {
+            $total += ($product['price'] * $product['qty']);
+        }
 
-        //foreach ($products as $product) {
-        //    $total += ($product['price'] * $product['qty']);
-        //}
-
-        return (float) 90;
+        return (float) $total;
     }
 
     private function getTenantIdByOrder(string $uuid)
@@ -130,7 +128,7 @@ class OrderService
         if($uuid) {
             $table = $this->tableRepository->getTableByUuid($uuid);
             return $table->id;
-        } 
+        }
 
         return '';
     }
@@ -138,7 +136,7 @@ class OrderService
     private function getClientIdByOrder()
     {
         $client = auth()->check() ? auth()->user()->id : '';
-    
+
         return $client;
     }
 
