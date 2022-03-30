@@ -2,9 +2,10 @@
 
 namespace App\Listeners;
 
+use App\Models\Role;
 use App\Tenant\Events\TenantCreated;
-use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
+use Illuminate\Queue\InteractsWithQueue;
 
 class AddRoleTenant
 {
@@ -28,7 +29,7 @@ class AddRoleTenant
     {
         $user = $event->user();
 
-        if (!$role = Role::first())
+        if (!$role = Role::first()) 
             return;
 
         $user->roles()->attach($role);

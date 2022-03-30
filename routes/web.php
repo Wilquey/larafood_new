@@ -1,6 +1,8 @@
 <?php
 
 
+use App\Models\Client;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,6 +15,16 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+
+Route::get('wteste', function() {
+    $client = Client::first();
+    
+    $token = $client->createToken('token-teste');
+
+    dd($token->plainTextToken);
+});
+
+//Route::get('/sanctum/token1', 'Api\Auth\AuthClientController@auth');
 
 route::prefix('admin')
             ->namespace('Admin')
