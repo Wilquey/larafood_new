@@ -202,18 +202,18 @@ route::prefix('admin')
     /**
      * Home Dashboard
      */
-    Route::get('/', 'PlanController@index')->name('admin.index');
+    Route::get('/', 'DashboardController@dashboard')->name('admin.index');
 
 });
 
-/**
-* Site
-**/
-Route::get('/plan/{url}', 'Site\SiteController@plan')->name('plan.subscription');
-Route::get('/', 'Site\SiteController@index')->name('site.home');
+    /**
+    * Site
+    **/
+    Route::get('/plan/{url}', 'Site\SiteController@plan')->name('plan.subscription');
+    Route::get('/', 'Site\SiteController@index')->name('site.home');
 
-/**
-* Auth routes
-**/
-Auth::routes();
+    /**
+    * Auth routes
+    **/
+    Auth::routes();
 

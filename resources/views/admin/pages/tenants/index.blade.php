@@ -28,14 +28,14 @@
                         <th>cnpj</th>
                         <th>url</th>
                         <th>email</th>
-                        <th width="200">Ações</th> 
+                        <th width="200">Ações</th>
                     </tr>
                 </thead>
                 <tbody>
                     @foreach ($tenants as $tenant)
                         <tr>
                             <td>
-                                <img src="{{ url("storage/{$tenant->image}") }}" alt="{{ $tenant->title }}" style="max-width:90px;">                                
+                                <img src="{{ url("storage/{$tenant->logo}") }}" alt="{{ $tenant->title }}" style="max-width:90px;">
                             </td>
                             <td>
                                 {{ $tenant->name }}
@@ -47,7 +47,7 @@
                                 {{ $tenant->url }}
                             </td>
                             <td>
-                                {{ $tenant->description }}
+                                {{ $tenant->email }}
                             </td>
                             <td style="width: 50px;">
                                 <a href="{{ route('tenants.edit', $tenant->id) }}" class="btn btn-primary"><i class="fas fa-edit"></i></a>

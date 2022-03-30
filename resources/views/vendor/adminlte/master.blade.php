@@ -71,6 +71,9 @@
         <meta name="msapplication-TileImage" content="{{ asset('favicon/ms-icon-144x144.png') }}">
     @endif
 
+        <link rel="icon" type="image/png" href="{{ asset('imgs/favicon-larafood.png') }}">
+
+
 </head>
 
 <body class="@yield('classes_body')" @yield('body_data')>

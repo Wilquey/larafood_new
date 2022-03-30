@@ -18,6 +18,9 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+
+    <link rel="icon" type="image/png" href="{{ asset('imgs/favicon-larafood.png') }}">
+
 </head>
 <body>
     <div id="app">
