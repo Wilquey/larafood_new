@@ -1,7 +1,5 @@
 <?php
 
-
-use App\Models\Client;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -18,7 +16,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('wteste', function() {
     $client = Client::first();
-    
+
     $token = $client->createToken('token-teste');
 
     dd($token->plainTextToken);
@@ -39,7 +37,7 @@ route::prefix('admin')
     });
 
     /**
-     * Routes Users x Role 
+     * Routes Users x Role
      */
     Route::get('roles/{id}/users/{idUser}/detach', 'ACL\RoleUserController@detachRoleUser')->name('roles.users.detach');
     Route::post('roles/{id}/users', 'ACL\RoleUserController@attachRolesUser')->name('roles.users.attach');
@@ -87,6 +85,7 @@ route::prefix('admin')
     /**
      * Routes Tables
      */
+    Route::get('tables/qrcode/{identify}', 'TableController@qrcode')->name('tables.qrcode');
     Route::any('tables/search', 'TableController@search')->name('tables.search');
     Route::resource('tables', 'TableController');
 
@@ -125,7 +124,7 @@ route::prefix('admin')
     Route::resource('users', 'UserController');
 
      /**
-     * Routes Profile x Plan 
+     * Routes Profile x Plan
      */
     Route::get('profiles/{id}/plans/{idPlan}/detach', 'ACL\PlanProfileController@detachProfilePlan')->name('profiles.plans.detach');
     Route::post('profiles/{id}/plans', 'ACL\PlanProfileController@attachPlansProfile')->name('profiles.plans.attach');
