@@ -1,0 +1,58 @@
+Passo 1 Criar Model parâmetro -m para criar a migration
+php artisan make:model Models\\Tenant -m
+
+Passo 2 criar Controller
+php artisan make:controller Admin\\TenantController -resource
+
+Passo 3 criar Request
+php artisan make:request StoreUpdateTenant
+
+Passo 4 criar Observer
+php artisan make:observer TenantObeserver
+
+Passo 5 criar as rotas no web.php
+
+Passo 6 criar o fillable no model Tenant
+
+Passo 7 criar os dados no TenantController
+
+Passo 8 criar o conjunto de views
+
+
+btn btn-primary         tenants         fas fa-building
+btn btn-secondary       plans           fas fa-list-alt    
+btn btn-success         profiles        fas fa-address-book
+btn btn-danger          roles           fas fa-address-card
+btn btn-warning         permissions     fas fa-lock
+btn btn-info            users           fas fa-users
+btn btn-light           categories      fas fa-layer-group
+btn btn-dark            products        fas fa-hamburger
+                        tables          fas fa-tablet
+
+
+
+                       
+
+<i class="fas fa-edit"></i> primary
+
+<i class="fas fa-eye"></i> warning
+
+<i class="fas fa-address-book"></i>
+
+<i class="fas fa-file-invoice"></i>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
