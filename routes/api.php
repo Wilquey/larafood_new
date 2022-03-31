@@ -14,6 +14,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+
+
 Route::post('/auth/register', 'Api\Auth\RegisterController@store');
 Route::post('/auth/token', 'Api\Auth\AuthClientController@auth');
 
@@ -23,9 +25,9 @@ Route::group([
 ], function(){
     Route::get('/auth/me', 'Api\Auth\AuthClientController@me');
     Route::post('/auth/logout', 'Api\Auth\AuthClientController@logout');
-    
+
     Route::post('/auth/orders/{identifyOrder}/evaluations', 'Api\EvaluationApiController@store');
-        
+
     Route::get('/auth/my-orders', 'Api\OrderApiController@myOrders');
     Route::post('/auth/orders', 'Api\OrderApiController@store');
 
@@ -50,5 +52,12 @@ Route::get('/products', 'Api\ProductApiController@productsByTenant');
 
 Route::get('/orders/{identify}', 'Api\OrderApiController@show');
 Route::post('/orders', 'Api\OrderApiController@store');
+
+/**
+ * Test API
+ */
+Route::get('/', function() {
+    return response()->json(['message' => 'ok']);
+});
 
 
