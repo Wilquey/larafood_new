@@ -1,5 +1,7 @@
 <?php
 
+namespace Database\Seeders;
+
 use App\Models\{
     Tenant,
     Category
@@ -15,13 +17,13 @@ class CategoriesTableSeeder extends Seeder
      */
     public function run()
     {
-        $tenant = Tenant::first(); 
-        
+        $tenant = Tenant::first();
+
         $tenant->category->create([
             'name' => 'Categoria1',
             'url' => 'categoria1',
             'description' => 'desc categoria1',
-        ]      
+        ]
         );
     }
 }

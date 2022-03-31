@@ -1,5 +1,7 @@
 <?php
 
+namespace Database\Seeders;
+
 use App\Models\{
     Plan,
     Tenant
@@ -16,7 +18,7 @@ class TenantsTableSeeder extends Seeder
     public function run()
     {
         $plan = Plan::first();
-        
+
         $plan->tenants()->create([
             'cnpj' => '11125339000130',
             'name' => 'wsharefood',
