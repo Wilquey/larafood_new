@@ -35,6 +35,9 @@
     @else
         <link rel="stylesheet" href="{{ mix(config('adminlte.laravel_mix_css_path', 'css/app.css')) }}">
     @endif
+        
+        <link rel="stylesheet" href="{{ asset('css/custom-dash.css') }}">
+        <link rel="stylesheet" href="{{ asset('css/site.css') }}">
 
     {{-- Livewire Styles --}}
     @if(config('adminlte.livewire'))
