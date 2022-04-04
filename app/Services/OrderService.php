@@ -127,6 +127,7 @@ class OrderService
     {
         if($uuid) {
             $table = $this->tableRepository->getTableByUuid($uuid);
+
             return $table->id;
         }
 
@@ -138,6 +139,16 @@ class OrderService
         $client = auth()->check() ? auth()->user()->id : '';
 
         return $client;
+    }
+
+    public function getOrdersByTenantId(int $idTenant, string $status, string $date)
+    {
+        return $this->orderRepository->getOrdersByTenantId($idTenant, $status, $date);
+    }
+
+    public function updateStatusOrder(string $identify, string $status)
+    {
+        return $this->orderRepository->updateStatusOrder($identify, $status);
     }
 
 

@@ -81,6 +81,12 @@ route::prefix('admin')
     Route::any('tenants/search', 'TenantController@search')->name('tenants.search');
     Route::resource('tenants', 'TenantController');
 
+    /**
+     * Routes Orders
+     */
+    // Route::any('orders/search', 'OrderController@search')->name('orders.search');
+    // Route::resource('orders', 'OrderController@index')->name('orders.index');
+
 
     /**
      * Routes Tables
