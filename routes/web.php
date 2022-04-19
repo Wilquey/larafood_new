@@ -84,8 +84,8 @@ route::prefix('admin')
     /**
      * Routes Orders
      */
-    // Route::any('orders/search', 'OrderController@search')->name('orders.search');
-    // Route::resource('orders', 'OrderController@index')->name('orders.index');
+    Route::any('orders/search', 'OrderController@search')->name('orders.search');
+    Route::resource('orders', 'OrderController');
 
 
     /**

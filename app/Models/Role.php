@@ -64,6 +64,25 @@ class Role extends Model
 
         return $roles;
     }
+
+    /**
+     * Users not linked with this role
+     */
+    public function usersAvailable($filter = null)
+    {
+        $users = User::whereNotIn('id', function($query){
+            $query->select('user_id');
+            $query->from('role_user');
+            $query->whereRaw("role_id={$this->id}");
+        })
+        ->where(function($queryFilter) use ($filter){
+            if($filter)
+                $queryFilter->where('users.name', 'LIKE', "%{$filter}%");
+        })
+        ->paginate();
+
+        return $users;
+    }
     
 
     

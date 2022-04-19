@@ -57,6 +57,16 @@ class Order extends Model
         return $this->hasMany(Evaluation::class);
     }
 
+    public function search($filter = null)
+    {
+        $results = $this
+                    ->where('name', 'LIKE', "%{$filter}%")
+                    ->orWhere('description', 'LIKE', "%{$filter}%")
+                    ->paginate();
+
+        return $results;
+    }
+
 
 
 }

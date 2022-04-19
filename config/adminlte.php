@@ -289,7 +289,7 @@ return [
             'text' => 'Pedidos',
             'url'  => 'admin/orders',
             'icon' => 'fas fa-utensils',
-            'can'  => 'orders',
+            //'can'  => 'orders',
         ],
     ],
 
