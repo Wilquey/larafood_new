@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Api;
 
+use App\Events\OrderCreated;
 use Illuminate\Http\Request;
 use App\Services\OrderService;
 use App\Http\Controllers\Controller;

@@ -16,7 +16,7 @@ class Client extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'name', 'email', 'password', 'tenant_id',
     ];
 
     public function orders()

@@ -3,6 +3,7 @@
 namespace App\Http\Requests\Api;
 
 use Illuminate\Foundation\Http\FormRequest;
+use App\Repositories\Contracts\OrderRepositoryInterface;
 
 class StoreEvaluationOrder extends FormRequest
 {

@@ -7,7 +7,7 @@ use App\Repositories\Contracts\EvaluationRepositoryInterface;
 
 class EvaluationRepository implements EvaluationRepositoryInterface
 {
-    protected $evaluation;
+    protected $entity;
 
     public function __construct(Evaluation $evaluation)
     {
@@ -26,12 +26,12 @@ class EvaluationRepository implements EvaluationRepositoryInterface
         return $this->entity->create($data);
     }
 
-    public function getEvaluationByOrder(int $idOrder)
+    public function getEvaluationsByOrder(int $idOrder)
     {
         return $this->entity->where('order_id', $idOrder)->get();
     }
 
-    public function getEvaluationByClient(int $idClient)
+    public function getEvaluationsByClient(int $idClient)
     {
         return $this->entity->where('client_id', $idClient)->get();
     }
@@ -41,11 +41,11 @@ class EvaluationRepository implements EvaluationRepositoryInterface
         return $this->entity->find($id);
     }
     
-    public function getEvaluationsByOrderIdByClientId(int $idOrder, int $idClient)
+    public function getEvaluationsByClientIdByOrderId(int $idOrder, int $idClient)
     {
         return $this->entity
-                    ->where('order_id', $idOrder)
                     ->where('client_id', $idClient)
+                    ->where('order_id', $idOrder)
                     ->first();
     }
     

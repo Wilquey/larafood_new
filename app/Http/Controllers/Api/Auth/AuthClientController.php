@@ -12,7 +12,7 @@ class AuthClientController extends Controller
 {
     public function auth(Request $request)
     {
-        //return response()->json($request->all());
+        // return response()->json($request->all());
         
         $request->validate([
             'email' => 'required|email',

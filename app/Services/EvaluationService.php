@@ -4,16 +4,17 @@ namespace App\Services;
 
 use App\Repositories\Contracts\EvaluationRepositoryInterface;
 use App\Repositories\Contracts\OrderRepositoryInterface;
+use Illuminate\Http\Request;
 
 class EvaluationService 
 {
     protected $evaluationRepository, $orderRepository;
 
     public function __construct(
-        EvaluationRepositoryInterface $evaluationRepository,    
+        EvaluationRepositoryInterface $evaluation,    
         OrderRepositoryInterface $orderRepository        
     ) {
-        $this->evaluationRepository = $evaluationRepository;
+        $this->evaluationRepository = $evaluation;
         $this->orderRepository = $orderRepository;
     }
 

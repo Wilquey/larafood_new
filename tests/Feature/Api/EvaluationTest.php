@@ -47,12 +47,10 @@ class EvaluationTest extends TestCase
         ];
 
         $response = $this->postJson(
-            "/api/auth/orders/{$order->identify}/evaluations",
+            "/auth/orders/{$order}/evaluations",
             $payload,
             $headers
         );
-
-        // $response->dump();
 
         $response->assertStatus(201);
     }

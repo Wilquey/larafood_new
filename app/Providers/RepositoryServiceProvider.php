@@ -3,23 +3,22 @@
 namespace App\Providers;
 
 use App\Repositories\Contracts\{
-    TenantRepositoryInterface,
     CategoryRepositoryInterface,
-    TableRepositoryInterface,
-    ProductRepositoryInterface,
     ClientRepositoryInterface,
     EvaluationRepositoryInterface,
-    OrderRepositoryInterface
+    OrderRepositoryInterface,
+    ProductRepositoryInterface,
+    TableRepositoryInterface,
+    TenantRepositoryInterface
 };
 use App\Repositories\{
-    TenantRepository,
     CategoryRepository,
-    TableRepository,
-    ProductRepository,
     ClientRepository,
     EvaluationRepository,
-    OrderRepository
-
+    OrderRepository,
+    ProductRepository,
+    TableRepository,
+    TenantRepository
 };
 
 use Illuminate\Support\ServiceProvider;

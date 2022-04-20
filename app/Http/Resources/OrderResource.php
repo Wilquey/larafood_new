@@ -2,6 +2,7 @@
 
 namespace App\Http\Resources;
 
+use Carbon\Carbon;
 use Illuminate\Http\Resources\Json\JsonResource;
 
 class OrderResource extends JsonResource
@@ -25,7 +26,7 @@ class OrderResource extends JsonResource
             'client' => $this->client_id ? new ClientResource($this->client) : '',
             'table' => $this->table_id ? new TableResource($this->table) : '',
             'products' => ProductResource::collection($this->products),
-            'evaluations' => EvaluationResource::colletion($this->order),
+            'evaluations' => EvaluationResource::collection($this->evaluations),
         ];
     }
 }

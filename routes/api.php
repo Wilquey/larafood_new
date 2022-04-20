@@ -14,8 +14,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-
-
 Route::post('/auth/register', 'Api\Auth\RegisterController@store');
 Route::post('/auth/token', 'Api\Auth\AuthClientController@auth');
 
