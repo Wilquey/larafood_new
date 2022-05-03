@@ -32,9 +32,7 @@ route::prefix('admin')
      * Documentation
     */
 
-    Route::get('test-acl', function(){
-        dd(auth()->user()->permissions());
-    });
+    Route::get('orders', 'OrderController@index')->name('orders.index');
 
     /**
      * Routes Users x Role

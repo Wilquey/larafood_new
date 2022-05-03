@@ -18,7 +18,7 @@ class TenantController extends Controller
 
         $this->middleware(['can:tenants']);
     }
-    
+
     /**
      * Display a listing of the resource.
      *
@@ -56,7 +56,7 @@ class TenantController extends Controller
         if($request->hasFile('logo') && $request->logo->isValid()){
             $data['logo'] = $request->logo->store("tenants/{$tenant->uuid}/tenants");
         }
-        
+
         $this->repository->create($data);
 
         return redirect()->route('tenants.index');
@@ -111,11 +111,11 @@ class TenantController extends Controller
         $data = $request->all();
 
         if($request->hasFile('logo') && $request->logo->isValid()) {
-            
+
             if(Storage::exists($tenant->logo)) {
                 Storage::delete($tenant->logo);
-            }            
-            
+            }
+
             $data['logo'] = $request->logo->store("tenants/{$tenant->uuid}/tenants");
         }
 
@@ -138,7 +138,7 @@ class TenantController extends Controller
 
         if (!$tenant)
             return redirect()->back();
-        
+
         if(Storage::exists($tenant->logo)){
                 Storage::delete($tenant->logo);
             }

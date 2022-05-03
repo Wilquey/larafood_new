@@ -8,7 +8,7 @@
         <li class="breadcrumb-item active"><a href="{{ route('orders.index') }}" class="active">Pedidos</a></li>
     </ol>
 
-    <h1>Pedidos</h1>
+    <h1>Pedidos2</h1>
 @stop
 
 @section('content')

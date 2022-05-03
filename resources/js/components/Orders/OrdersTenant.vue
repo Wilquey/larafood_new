@@ -98,7 +98,7 @@ export default {
             this.reset()
 
             this.loadingOrders = true
-            axios.get('/api/v1/my-orders', {params: {
+            axios.get('/api/my-orders', {params: {
                 status: this.status,
                 date: this.dateFilter
             }})

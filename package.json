@@ -13,6 +13,8 @@
         "axios": "^0.26.1",
         "bootstrap": "^4.0.0",
         "cross-env": "^7.0",
+        "graphql": "^16.4.0",
+        "graphql-tag": "^2.12.6",
         "jquery": "^3.2",
         "laravel-mix": "^6.0.43",
         "lodash": "^4.17.19",
@@ -22,11 +24,12 @@
         "sass": "^1.20.1",
         "sass-loader": "^8.0.0",
         "vue": "^2.6.14",
+        "vue-loader": "^15.9.8",
         "vue-template-compiler": "^2.6.10"
     },
     "dependencies": {
         "laravel-echo": "^1.11.4",
-        "socket.io-client": "^4.4.1",
+        "socket.io-client": "^4.5.0",
         "vue-toastify": "^1.8.1"
     }
 }

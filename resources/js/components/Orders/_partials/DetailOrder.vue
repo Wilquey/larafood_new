@@ -92,7 +92,7 @@ export default {
         updateStatus() {
             this.loading = true
 
-            axios.patch('/api/v1/my-orders', {
+            axios.patch('/api/my-orders', {
                 status: this.status,
                 identify: this.order.identify
             })
